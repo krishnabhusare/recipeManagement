@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const userRoutes = require('./routes/user');
 const userAuthentication = require('./middelware/auth');
 const Recipe = require('./models/recipe');
+const recipeRoutes = require('./routes/recipe');
 
 
 
@@ -16,13 +17,13 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/user', userRoutes);
+app.use('/recipe', recipeRoutes);
 
-app.post('/recipe/add-recipe', userAuthentication.authenticate, async (req, res, next) => {
+
+app.get('/allRecipe/get-allRecipe', async (req, res, next) => {
     try {
-        const { recipeName, content, procedure } = req.body;
-        const recipe = await req.user.createRecipe({ recipeName, content, procedure });
-        res.status(201).json({ msg: 'recipe posted', recipe });
-
+        const allRecipe = await Recipe.findAll();
+        res.status(200).json({ allRecipe });
 
     } catch (err) {
         res.status(500).json(err);
