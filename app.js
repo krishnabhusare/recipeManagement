@@ -9,6 +9,7 @@ const userRoutes = require('./routes/user');
 const userAuthentication = require('./middelware/auth');
 const Recipe = require('./models/recipe');
 const recipeRoutes = require('./routes/recipe');
+const Comments = require('./models/comments');
 
 
 
@@ -30,11 +31,30 @@ app.get('/allRecipe/get-allRecipe', async (req, res, next) => {
     }
 })
 
+app.post('/allRecipe/add-comment', userAuthentication.authenticate, async (req, res, next) => {
+    try {
+        const { comment, recipeid } = req.body;
+
+        const comments = await req.user.createComment({ comment, recipeId: recipeid })
+        res.status(201).json({ comments });
+
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+})
+
 
 
 
 User.hasMany(Recipe);
 Recipe.belongsTo(User);
+
+User.hasMany(Comments);
+Comments.belongsTo(User);
+
+Recipe.hasMany(Comments);
+Comments.belongsTo(Recipe);
 
 sequelize.sync({})
     .then(() => {
