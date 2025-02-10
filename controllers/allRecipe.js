@@ -1,5 +1,6 @@
 const Comments = require('../models/comments');
 const Recipe = require('../models/recipe');
+const User = require('../models/user');
 
 const getAllRecipe = async (req, res, next) => {
     try {
@@ -26,7 +27,9 @@ const postComment = async (req, res, next) => {
 
 const getAllComments = async (req, res, next) => {
     try {
+
         const { recipeid } = req.params;
+
         const allcomments = await Comments.findAll({
             where: { recipeId: recipeid },
             include: {
@@ -36,8 +39,8 @@ const getAllComments = async (req, res, next) => {
         }
 
 
-
         )
+
         res.status(200).json({ allcomments });
 
     }

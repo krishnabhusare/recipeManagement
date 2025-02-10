@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 
 function tokenGenerator(userid) {
-    return jwt.sign({ id: userid }, "secreteKey");
+    return jwt.sign({ id: userid }, process.env.JWT_SECRETE_KEY);
 }
 
 const signup = async (req, res, next) => {

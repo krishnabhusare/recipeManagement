@@ -1,8 +1,9 @@
+
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('recipe', 'root', 'Krish@123', {
+const sequelize = new Sequelize(process.env.SHEMA_NAME, process.env.USER_NAME, process.env.SQL_PASSWORD, {
     dialect: "mysql",
-    host: "localhost"
+    host: process.env.SQL_HOST
 })
 
 module.exports = sequelize;

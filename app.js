@@ -3,15 +3,12 @@ const express = require('express');
 const cors = require('cors');
 const sequelize = require('./util/database');
 const User = require('./models/user');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const userRoutes = require('./routes/user');
-const userAuthentication = require('./middelware/auth');
 const Recipe = require('./models/recipe');
 const recipeRoutes = require('./routes/recipe');
 const Comments = require('./models/comments');
 const allRecipeRoutes = require('./routes/allRecipe');
-const router = require('./routes/user');
+const path = require('path');
 
 
 
@@ -22,6 +19,11 @@ app.use(express.json());
 app.use('/user', userRoutes);
 app.use('/recipe', recipeRoutes);
 app.use('/allRecipe', allRecipeRoutes);
+
+
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, 'public', `${req.url}`))
+})
 
 
 
@@ -35,6 +37,8 @@ Comments.belongsTo(User);
 
 Recipe.hasMany(Comments);
 Comments.belongsTo(Recipe);
+
+
 
 sequelize.sync({})
     .then(() => {

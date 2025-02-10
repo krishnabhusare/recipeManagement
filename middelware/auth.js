@@ -3,7 +3,7 @@ const User = require('../models/user');
 
 const authenticate = async (req, res, next) => {
     try {
-        const decreptedToken = jwt.verify(req.headers.authorization, 'secreteKey');
+        const decreptedToken = jwt.verify(req.headers.authorization, process.env.JWT_SECRETE_KEY);
         const user = await User.findByPk(decreptedToken.id);
 
         req.user = user;

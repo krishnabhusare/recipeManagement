@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <a href="../allrecipe/allrecipe.html">All recipies</a>
+</head>
+
+<body>
+    <h1>recipe page</h1>
+    <form onsubmit="recipe(event)">
+        <label for="recipeName">Recipe Name</label>
+        <input type="text" name="recipeName" id="recipeName">
+        <label for="content">content:</label>
+        <input type="text" name="content" id="content">
+        <label for="procedure">Procedure:</label>
+        <input type="text" name="procedure" id="procedure">
+        <button> post recipe</button>
+    </form>
+    <div id="userRecipe"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"></script>
+    <script src="./recipe.js"></script>
+</body>
+
+</html>
