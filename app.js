@@ -10,6 +10,8 @@ const userAuthentication = require('./middelware/auth');
 const Recipe = require('./models/recipe');
 const recipeRoutes = require('./routes/recipe');
 const Comments = require('./models/comments');
+const allRecipeRoutes = require('./routes/allRecipe');
+const router = require('./routes/user');
 
 
 
@@ -19,30 +21,8 @@ app.use(express.json());
 
 app.use('/user', userRoutes);
 app.use('/recipe', recipeRoutes);
+app.use('/allRecipe', allRecipeRoutes);
 
-
-app.get('/allRecipe/get-allRecipe', async (req, res, next) => {
-    try {
-        const allRecipe = await Recipe.findAll();
-        res.status(200).json({ allRecipe });
-
-    } catch (err) {
-        res.status(500).json(err);
-    }
-})
-
-app.post('/allRecipe/add-comment', userAuthentication.authenticate, async (req, res, next) => {
-    try {
-        const { comment, recipeid } = req.body;
-
-        const comments = await req.user.createComment({ comment, recipeId: recipeid })
-        res.status(201).json({ comments });
-
-    }
-    catch (err) {
-        res.status(500).json(err);
-    }
-})
 
 
 
