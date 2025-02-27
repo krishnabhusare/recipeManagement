@@ -2,7 +2,7 @@
 
 window.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/favorite/get-favoriteRecipe', { headers: { Authorization: token } })
+    axios.get('http://13.234.231.9:3000/favorite/get-favoriteRecipe', { headers: { Authorization: token } })
         .then(result => {
 
             result.data.user.recipes.forEach(element => {
@@ -21,7 +21,7 @@ function showRecipeOnScreen(arr) {
 
 function collection(recipeid) {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/favorite/get-collection', { headers: { Authorization: token } })
+    axios.get('http://13.234.231.9:3000/favorite/get-collection', { headers: { Authorization: token } })
         .then(result => {
             document.getElementById('favorite').innerHTML += '<h1>Click on bellow collection to add</h1>'
             result.data.collection.forEach(element => {
@@ -39,7 +39,7 @@ function showCollectionOnScreen(obj, recipeid) {
 }
 
 function addToCollection(collectionid, recipeid) {
-    axios.post('http://localhost:3000/favorite/add-tocollection', { collectionid, recipeid })
+    axios.post('http://13.234.231.9:3000/favorite/add-tocollection', { collectionid, recipeid })
         .then(result => {
             alert('added to collection');
             document.getElementById('favorite').innerHTML = "";
@@ -52,7 +52,7 @@ function addToCollection(collectionid, recipeid) {
 
 function viewDetails(id) {
 
-    axios.get(`http://localhost:3000/recipe/get-detailedrecipe/${id}`)
+    axios.get(`http://13.234.231.9:3000/recipe/get-detailedrecipe/${id}`)
         .then(result => {
             const stringifiedRecipeDetails = JSON.stringify(result.data.recipeDetails);
             localStorage.setItem('recipeDetails', stringifiedRecipeDetails);
@@ -81,7 +81,7 @@ function showDetailedRecipeOnScreen(obj) {
 
 function removeFromfavorite(recipeid) {
     const token = localStorage.getItem('token');
-    axios.delete(`http://localhost:3000/favorite/remove-fromfavorite/${recipeid}`, { headers: { Authorization: token } })
+    axios.delete(`http://13.234.231.9:3000/favorite/remove-fromfavorite/${recipeid}`, { headers: { Authorization: token } })
         .then(result => {
             removeRecipeOnScreen(recipeid);
             alert('removed from favorite');

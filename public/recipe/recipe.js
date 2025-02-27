@@ -34,7 +34,7 @@ function recipe(e) {
     const token = localStorage.getItem('token');
 
 
-    axios.post('http://localhost:3000/recipe/post-recipe', formData, { headers: { Authorization: token } })
+    axios.post('http://13.234.231.9:3000/recipe/post-recipe', formData, { headers: { Authorization: token } })
         .then(result => {
             alert('recipe posted');
             window.location.href = '../myrecipe/myrecipe.html';

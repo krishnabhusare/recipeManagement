@@ -5,7 +5,7 @@ function createCollection(e) {
     };
     const token = localStorage.getItem('token');
 
-    axios.post('http://localhost:3000/favorite/create-collection', collectionDetails, { headers: { Authorization: token } })
+    axios.post('http://13.234.231.9:3000/favorite/create-collection', collectionDetails, { headers: { Authorization: token } })
         .then(result => {
 
             showCollectionOnScreen(result.data.collection);
@@ -24,7 +24,7 @@ function showCollectionOnScreen(obj) {
 function insideCollection(collectionid) {
 
     document.getElementById('mycollection').innerHTML = "";
-    axios.get(`http://localhost:3000/favorite/get-recipeincollection/${collectionid}`)
+    axios.get(`http://13.234.231.9:3000/favorite/get-recipeincollection/${collectionid}`)
         .then(result => {
             result.data.recipecollection.recipes.forEach(element => {
                 showRecipeOnScreen(element, collectionid);
@@ -47,7 +47,7 @@ function removeRecipeOnScreen(recipeid) {
 
 function removeRecipeFromCollection(recipeid, collectionid) {
 
-    axios.delete(`http://localhost:3000/favorite/removeRecipeFromCollection/${recipeid}/${collectionid}`)
+    axios.delete(`http://13.234.231.9:3000/favorite/removeRecipeFromCollection/${recipeid}/${collectionid}`)
         .then(result => {
 
             removeRecipeOnScreen(recipeid);
@@ -56,7 +56,7 @@ function removeRecipeFromCollection(recipeid, collectionid) {
 
 function viewDetails(id) {
 
-    axios.get(`http://localhost:3000/recipe/get-detailedrecipe/${id}`)
+    axios.get(`http://13.234.231.9:3000/recipe/get-detailedrecipe/${id}`)
         .then(result => {
             const stringifiedRecipeDetails = JSON.stringify(result.data.recipeDetails);
             localStorage.setItem('recipeDetails', stringifiedRecipeDetails);
@@ -84,7 +84,7 @@ function showDetailedRecipeOnScreen(obj) {
 
 window.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/favorite/get-collection', { headers: { Authorization: token } })
+    axios.get('http://13.234.231.9:3000/favorite/get-collection', { headers: { Authorization: token } })
         .then(result => {
             result.data.collection.forEach(element => {
                 showCollectionOnScreen(element);

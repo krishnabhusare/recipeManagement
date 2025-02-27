@@ -5,7 +5,7 @@ function login(e) {
         email: e.target.email.value,
         password: e.target.password.value
     }
-    axios.post('http://localhost:3000/user/login', loginDetails)
+    axios.post('http://13.234.231.9:3000/user/login', loginDetails)
         .then(result => {
             const token = result.data.token;
 

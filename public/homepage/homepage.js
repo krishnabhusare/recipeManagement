@@ -22,7 +22,7 @@ document.getElementById('login').innerHTML += `
 
 window.addEventListener('DOMContentLoaded', () => {
     localStorage.removeItem('filterObj');
-    axios.get('http://localhost:3000/search/all-recipe')
+    axios.get('http://13.234.231.9:3000/search/all-recipe')
         .then(result => {
             result.data.allReciep.forEach(element => {
                 showAllRecipeOnScreen(element);
@@ -40,7 +40,7 @@ function showAllRecipeOnScreen(arr) {
 
 function favorite(recipeid) {
     const token = localStorage.getItem('token');
-    axios.post('http://localhost:3000/favorite/add-favorite', { recipeid }, { headers: { Authorization: token } })
+    axios.post('http://13.234.231.9:3000/favorite/add-favorite', { recipeid }, { headers: { Authorization: token } })
         .then(result => {
             alert('added to favorite');
         })
@@ -51,7 +51,7 @@ function favorite(recipeid) {
 
 
 function viewDetails(recipeid) {
-    axios.get(`http://localhost:3000/recipe/get-detailedrecipe/${recipeid}`)
+    axios.get(`http://13.234.231.9:3000/recipe/get-detailedrecipe/${recipeid}`)
         .then(result => {
             showDetailedRecipeOnScreen(result.data.recipeDetails);
         })
@@ -100,7 +100,7 @@ function showDetailedRecipeOnScreen(obj) {
             recipeid: obj.id
         }
         const token = localStorage.getItem('token');
-        axios.post('http://localhost:3000/rating/give-rating', ratingDetails, { headers: { Authorization: token } })
+        axios.post('http://13.234.231.9:3000/rating/give-rating', ratingDetails, { headers: { Authorization: token } })
             .then(result => {
                 alert("Rating submitted!");
 
@@ -123,7 +123,7 @@ function showDetailedRecipeOnScreen(obj) {
 }
 
 function getRating(recipeid) {
-    axios.get(`http://localhost:3000/rating/get-rating/${recipeid}`, { headers: { Authorization: token } })
+    axios.get(`http://13.234.231.9:3000/rating/get-rating/${recipeid}`, { headers: { Authorization: token } })
         .then(result => {
             if (result.data.rating.length > 0) {
                 const savedRating = result.data.rating[0].rating;
@@ -150,7 +150,7 @@ function postComment(e, recipeid) {
     e.preventDefault();
     const token = localStorage.getItem('token');
     const comment = e.target.comment.value;
-    axios.post('http://localhost:3000/comment/post-comment', { comment, recipeid }, { headers: { Authorization: token } })
+    axios.post('http://13.234.231.9:3000/comment/post-comment', { comment, recipeid }, { headers: { Authorization: token } })
         .then(result => {
 
             showCommentOnScreen(result.data.commented, result.data.username);
@@ -165,7 +165,7 @@ function showCommentOnScreen(obj, username) {
 }
 
 function getAllComment(recipeid) {
-    axios.get(`http://localhost:3000/comment/get-allComment/${recipeid}`)
+    axios.get(`http://13.234.231.9:3000/comment/get-allComment/${recipeid}`)
         .then(result => {
             document.getElementById('allcomments').innerHTML = "";
             result.data.allComment.forEach(element => {
@@ -201,7 +201,7 @@ function searchRecipe(e) {
     const filterObj = { query };
     localStorage.setItem('filterObj', JSON.stringify(filterObj));
 
-    axios.get('http://localhost:3000/search/get-recipe', { params: { query } })
+    axios.get('http://13.234.231.9:3000/search/get-recipe', { params: { query } })
         .then(result => {
 
             result.data.searchedRecipe.forEach(element => {
@@ -281,7 +281,7 @@ function cuisin() {
 
 
 
-    axios.get('http://localhost:3000/search/get-recipe', { params: query })
+    axios.get('http://13.234.231.9:3000/search/get-recipe', { params: query })
         .then(result => {
 
             document.getElementById('searchRecipe').innerHTML = "";
@@ -304,7 +304,7 @@ function mainingredient() {
     localStorage.setItem('filterObj', JSON.stringify({ ...filterObj, mainingredient }))
     const query = JSON.parse(localStorage.getItem('filterObj'));
 
-    axios.get('http://localhost:3000/search/get-recipe', { params: query })
+    axios.get('http://13.234.231.9:3000/search/get-recipe', { params: query })
         .then(result => {
             document.getElementById('searchRecipe').innerHTML = "";
             result.data.searchedRecipe.forEach(element => {
@@ -324,7 +324,7 @@ function cookingtime() {
 
     localStorage.setItem('filterObj', JSON.stringify({ ...filterObj, cookingtime }))
     const query = JSON.parse(localStorage.getItem('filterObj'));
-    axios.get('http://localhost:3000/search/get-recipe', { params: query })
+    axios.get('http://13.234.231.9:3000/search/get-recipe', { params: query })
         .then(result => {
             document.getElementById('searchRecipe').innerHTML = "";
             result.data.searchedRecipe.forEach(element => {
@@ -344,7 +344,7 @@ function serves() {
     const serves = document.getElementById('serves').value;
     localStorage.setItem('filterObj', JSON.stringify({ ...filterObj, serves }));
     const query = JSON.parse(localStorage.getItem('filterObj'));
-    axios.get('http://localhost:3000/search/get-recipe', { params: query })
+    axios.get('http://13.234.231.9:3000/search/get-recipe', { params: query })
         .then(result => {
             document.getElementById('searchRecipe').innerHTML = "";
             result.data.searchedRecipe.forEach(element => {

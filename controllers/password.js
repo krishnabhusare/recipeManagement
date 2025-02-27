@@ -22,7 +22,7 @@ const forgotPassword = async (req, res, next) => {
             sendSmtpEmail.to = [{ email: email, name: 'kanha' }];
             sendSmtpEmail.subject = 'forgot password link';
             sendSmtpEmail.textContent = 'this is mail from krishna for reseting your password';
-            sendSmtpEmail.htmlContent = `<a href="http://localhost:3000/password/reset-password/${id}">Forgot password</a>`
+            sendSmtpEmail.htmlContent = `<a href="http://13.234.231.9:3000/password/reset-password/${id}">Forgot password</a>`
 
 
 
@@ -57,7 +57,7 @@ const resetPassword = async (req, res, next) => {
 </head>
 
 <body>
-    <form action="http://localhost:3000/password/update-password/${passwordid}">
+    <form action="http://13.234.231.9:3000/password/update-password/${passwordid}">
         <label for="newPassword">New Password:</label>
         <input type="password" name="password" id="password">
         <button>set password</button>

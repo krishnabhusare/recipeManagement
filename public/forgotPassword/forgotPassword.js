@@ -3,7 +3,7 @@ function forgotPassword(e) {
     const forgotPasswordDetails = {
         email: e.target.email.value
     }
-    axios.post('http://localhost:3000/password/forgot-password', forgotPasswordDetails)
+    axios.post('http://13.234.231.9:3000/password/forgot-password', forgotPasswordDetails)
         .then(result => {
             alert('check your email for password reset link');
         })

@@ -1,7 +1,7 @@
 const token = localStorage.getItem('token');
 function banUsers() {
 
-    axios.get('http://localhost:3000/follow/get-usersToFollow', { headers: { Authorization: token } })
+    axios.get('http://13.234.231.9:3000/follow/get-usersToFollow', { headers: { Authorization: token } })
         .then(result => {
             document.getElementById('banneduser').innerHTML = "";
             result.data.users.forEach(element => {
@@ -18,7 +18,7 @@ function showUsersOnScreen(obj) {
 }
 
 function banned(userid) {
-    axios.delete(`http://localhost:3000/admin/delete-user/${userid}`, { headers: { Authorization: token } })
+    axios.delete(`http://13.234.231.9:3000/admin/delete-user/${userid}`, { headers: { Authorization: token } })
         .then(result => {
             removeUserFromScreen(userid);
         })
@@ -34,7 +34,7 @@ function removeUserFromScreen(userid) {
 
 
 function recipe() {
-    axios.get('http://localhost:3000/search/all-recipe')
+    axios.get('http://13.234.231.9:3000/search/all-recipe')
         .then(result => {
             document.getElementById('myrecipe').innerHTML = "";
             result.data.allReciep.forEach(element => {
@@ -53,7 +53,7 @@ function showRecipeOnScreen(arr) {
 
 function deleteRecipe(recipeid) {
 
-    axios.delete(`http://localhost:3000/recipe/delete-recipe/${recipeid}`, { headers: { Authorization: token } })
+    axios.delete(`http://13.234.231.9:3000/recipe/delete-recipe/${recipeid}`, { headers: { Authorization: token } })
         .then(result => {
             removeRecipeOnScreen(recipeid);
             alert('recipe deleted ');
@@ -70,7 +70,7 @@ function removeRecipeOnScreen(recipeid) {
 
 function viewDetails(id) {
 
-    axios.get(`http://localhost:3000/recipe/get-detailedrecipe/${id}`)
+    axios.get(`http://13.234.231.9:3000/recipe/get-detailedrecipe/${id}`)
         .then(result => {
             const stringifiedRecipeDetails = JSON.stringify(result.data.recipeDetails);
             localStorage.setItem('recipeDetails', stringifiedRecipeDetails);
@@ -221,7 +221,7 @@ function update(e, recipeid) {
 
     const token = localStorage.getItem('token');
 
-    axios.put(`http://localhost:3000/recipe/update-recipe/${recipeid}`, formData, { headers: { Authorization: token } })
+    axios.put(`http://13.234.231.9:3000/recipe/update-recipe/${recipeid}`, formData, { headers: { Authorization: token } })
         .then(result => {
             alert('recipe updated');
             window.location.href = '../admin/admin.html'

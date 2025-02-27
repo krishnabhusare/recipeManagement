@@ -7,7 +7,7 @@ function profile(e) {
 
     const token = localStorage.getItem('token');
 
-    axios.post('http://localhost:3000/profile/edit-profile', profileDetails, { headers: { Authorization: token } })
+    axios.post('http://13.234.231.9:3000/profile/edit-profile', profileDetails, { headers: { Authorization: token } })
         .then(result => {
             localStorage.setItem('token', result.data.token);
             window.location.href = '../homepage/homepage.html'
@@ -19,7 +19,7 @@ function profile(e) {
 
 function followUsers() {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/follow/get-usersToFollow', { headers: { Authorization: token } })
+    axios.get('http://13.234.231.9:3000/follow/get-usersToFollow', { headers: { Authorization: token } })
         .then(result => {
             result.data.users.forEach(element => {
                 showUsersOnScreen(element);
@@ -36,7 +36,7 @@ function showUsersOnScreen(arr) {
 
 function follow(userid) {
     const token = localStorage.getItem('token');
-    axios.post('http://localhost:3000/follow/followUsers', { userid }, { headers: { Authorization: token } })
+    axios.post('http://13.234.231.9:3000/follow/followUsers', { userid }, { headers: { Authorization: token } })
         .then(result => {
             alert('followed');
         })
@@ -47,7 +47,7 @@ function follow(userid) {
 
 function seeFollowing() {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/follow/get-following', { headers: { Authorization: token } })
+    axios.get('http://13.234.231.9:3000/follow/get-following', { headers: { Authorization: token } })
         .then(result => {
 
             result.data.arr.forEach(element => {
@@ -66,7 +66,7 @@ function showFollowingOnScreen(arr) {
 
 function unfollow(userid) {
     const token = localStorage.getItem('token');
-    axios.delete(`http://localhost:3000/follow/unfollow/${userid}`, { headers: { Authorization: token } })
+    axios.delete(`http://13.234.231.9:3000/follow/unfollow/${userid}`, { headers: { Authorization: token } })
         .then(result => {
             removeUserFromScreen(userid);
         })
@@ -83,7 +83,7 @@ function removeUserFromScreen(id) {
 
 function seeFollowers() {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/follow/get-followers', { headers: { Authorization: token } })
+    axios.get('http://13.234.231.9:3000/follow/get-followers', { headers: { Authorization: token } })
         .then(result => {
             result.data.arr.forEach(element => {
                 showFollowersOnscreen(element);
@@ -100,7 +100,7 @@ function showFollowersOnscreen(arr) {
 
 function notifications() {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/activity/get-notification', { headers: { Authorization: token } })
+    axios.get('http://13.234.231.9:3000/activity/get-notification', { headers: { Authorization: token } })
         .then(result => {
 
             document.getElementById('notifications').innerHTML = "";
