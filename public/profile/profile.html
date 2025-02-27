@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<br><br>
+<a href="../homepage/homepage.html">Home</a>
+<br>
+<a href="../recipe/recipe.html">Share a Recipe</a>
+<br>
+<a href="../homepage/homepage.html">Search</a>
+<br>
+<a href="../myaccount/myaccount.html">My Account</a>
+<br>
+<a href="../collection/collection.html">My collection</a>
+<br>
+<a href="../favorite/favorite.html">My Favorite Recipe</a>
+<br>
+<a href="../profile/profile.html">profile</a>
+
+<body>
+    <h1>profile page</h1>
+    <form onsubmit="profile(event)">
+        <label for="newpassword">New password:</label>
+        <input type="password" name="newpassword" id="newpassword">
+        <label for="displayname">Display Name:</label>
+        <input type="text" name="displayname" id="displayname">
+        <button>submit</button>
+    </form>
+    <br><br>
+    <button onclick="seeFollowers()">followers</button>
+    <div id="followers"></div>
+    <button onclick="seeFollowing()">following</button>
+    <div id="following"></div>
+    <br><br>
+    <button onclick="followUsers()">Follow Users</button>
+    <div id="users"></div>
+    <br><br>
+    <button onclick="notifications()">see notifications</button>
+    <div id="notifications"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"></script>
+    <script src="./profile.js"></script>
+</body>
+
+</html>

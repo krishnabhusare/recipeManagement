@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            cursor: pointer;
+            padding: 8px;
+            transition: background 0.3s;
+        }
+
+        li:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<br><br>
+<a href="../homepage/homepage.html">Home</a>
+<br>
+<a href="../recipe/recipe.html">Share a Recipe</a>
+<br>
+<a href="../homepage/homepage.html">Search</a>
+<br>
+<a href="../myaccount/myaccount.html">My Account</a>
+<br>
+<a href="../collection/collection.html">My collection</a>
+<br>
+<a href="../favorite/favorite.html">My Favorite Recipe</a>
+<br>
+<a href="../profile/profile.html">profile</a>
+
+<body>
+
+    <form onsubmit="createCollection(event)">
+        <label for="name">name:</label>
+        <input type="text" name="name" id="name">
+        <button>create collection</button>
+
+    </form>
+    <h1>My Collections</h1>
+    <div id="mycollection"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"></script>
+    <script src="./collection.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<br><br>
+<a href="../homepage/homepage.html">Home</a>
+<br>
+<a href="../recipe/recipe.html">Share a Recipe</a>
+<br>
+<a href="../homepage/homepage.html">Search</a>
+<br>
+<a href="../myaccount/myaccount.html">My Account</a>
+<br>
+<a href="../collection/collection.html">My collection</a>
+<br>
+<a href="../favorite/favorite.html">My Favorite Recipe</a>
+<br>
+<a href="../profile/profile.html">profile</a>
+
+<body>
+    <h1>recipe page</h1>
+    <form onsubmit="recipe(event)">
+        <label for="recipename">Recipe Name:</label>
+        <br>
+        <input type="text" name="recipename" id="recipename">
+        <br>
+        <label for="description">Description:</label>
+        <br>
+        <input type="text" name="description" id="description">
+        <br>
+        <label for="ingredient">Ingredients:</label>
+        <br>
+        <textarea name="ingredient" id="ingredient"></textarea>
+        <br>
+        <label for="method">Method:</label>
+        <br>
+        <textarea name="method" id="method"></textarea>
+        <br>
+        <label for="cuisin">Cuisin</label>
+        <br>
+        <select name="cuisin" id="cuisin">
+
+            <option value="cakes">Cakes</option>
+            <option value="drinks">Drinks</option>
+            <option value="starter">starter</option>
+            <option value="juice">juice</option>
+            <option value="salad">salad</option>
+        </select>
+        <br>
+        <label for="mainingredient">Main Ingredient:</label>
+        <br>
+        <select name="mainingredient" id="mainingredient">
+            <option value="beans">beans</option>
+            <option value="beef">beef</option>
+            <option value="paneer">paneer</option>
+            <option value="egg">egg</option>
+            <option value="fish">fish</option>
+            <option value="potato">potato</option>
+            <option value="vegetables">vegetables</option>
+        </select>
+        <br>
+        <label for="cookingtime">Cooking Time:</label>
+        <br>
+        <select name="cookingtime" id="cookingtime">
+            <option value="5min">upto 5 min</option>
+            <option value="10min">10 min</option>
+            <option value="10-15min"> 10-15 min</option>
+            <option value="15-20min">15-20 min</option>
+        </select>
+        <br>
+        <label for="serves">Serves:</label>
+        <br>
+        <select name="serves" id="serves">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <br>
+        <label for="keyword">Kwywords:</label>
+        <br>
+        <input type="text" name="keyword" id="keyword" placeholder="saperate keyword , comma">
+        <br>
+        <label for="uploadphoto">Upload Photo:</label>
+        <br>
+        <input type="file" name="uploadphoto" id="uploadphoto">
+        <br><br>
+        <button>Publish</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"></script>
+    <script src="./recipe.js"></script>
+</body>
+
+</html>
